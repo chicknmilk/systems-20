@@ -21,8 +21,7 @@ int server_handshake(int *to_client) {
   printf("Secret: %s\n", buffer);
   remove(WKP);
 
-  char res[] = "I got your secret ;)\n";
-  int to_client = open(ACK, O_WRONLY);
+  *to_client = open(buffer, O_WRONLY);
   write(to_client, res, strlen(res));
 
   char * res = calloc(BUFFER_SIZE, sizeof(char));
