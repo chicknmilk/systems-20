@@ -22,7 +22,7 @@ int server_handshake(int *to_client) {
   remove(WKP);
 
   *to_client = open(buffer, O_WRONLY);
-  write(to_client, res, strlen(res));
+  write(to_client, ACK, strlen(ACK));
 
   char * res = calloc(BUFFER_SIZE, sizeof(char));
   read(from_client, res, BUFFER_SIZE);
