@@ -47,7 +47,7 @@ int client_handshake(int *to_server) {
 
   char buffer[BUFFER_SIZE];
   int pid = getpid();
-  sscanf(buffer, "%d", &pid);
+  sscanf(buffer, "%d", getpid());
   mkfifo(buffer, 0644);
 
   *to_server = open(WKP, O_WRONLY);
