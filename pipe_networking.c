@@ -54,7 +54,7 @@ int client_handshake(int *to_server) {
   *to_server = open(WKP, O_WRONLY);
   write(*to_server, buffer, strlen(buffer));
 
-  int from_server = open(buffer, O_RDONLY);
+  from_server = open(buffer, O_RDONLY);
   char * res = calloc(BUFFER_SIZE, sizeof(char));
   read(from_server, res, BUFFER_SIZE);
 
