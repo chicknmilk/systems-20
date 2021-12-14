@@ -22,7 +22,7 @@ int server_handshake(int *to_client) {
   remove(WKP);
 
   *to_client = open(buffer, O_WRONLY);
-  write(to_client, ACK, strlen(ACK));
+  write(*to_client, ACK, strlen(ACK));
 
   char * res = calloc(BUFFER_SIZE, sizeof(char));
   read(from_client, res, BUFFER_SIZE);
@@ -60,7 +60,7 @@ int client_handshake(int *to_server) {
   printf("Recieved response: %s\n", res);
   remove(buffer);
 
-  if (!strcmp(res, "I got your secret ;)\n")) {
+  if (!strcmp(res, ACK)) {
     write(*to_server, "client msg", strlen("client msg"));
   }
 
